@@ -1,0 +1,16 @@
+# Jetbrains
+.idea/
+out/
+
+# Vs Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Python
+.mypy_cache/
+
+# Misc
+.env
