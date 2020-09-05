@@ -17,11 +17,16 @@ def test_function():
     # col.models.all_names_and_ids()
     # deck = col.decks.byName("Experimenting")
     note = Note(col, {"id": model_id}, None)
-    note.fields[0] = "テ"
-    note.fields[1] = "A big keyword"
+    note.fields[0] = "カカファ"
+    note.fields[1] = "A Ka keyword"
+    # ゆ-bw.png
+    note.fields[2] = "120"
+    note.fields[3] = "The amazing story about the Ka character is amazing."
+    note.fields[4] = '<img src="ぷ-bw.png">'
 
     col.add_note(note, deck_id)
     col.save()
+    mw.deckBrowser.refresh()
 
 
 # def test_function():
