@@ -19,14 +19,14 @@ def test_function():
     deck_id = 1591395939518
     # col.models.all_names_and_ids()
     # deck = col.decks.byName("Experimenting")
-    media_dir = mw.col.media.dir()
-    support_dir = project.support_files
-
-    cat_img = path.join(support_dir, "octocat.png")
-    copyfile(cat_img, path.join(media_dir, "octocat.png"))
+    # media_dir = mw.col.media.dir()
+    # support_dir = project.support_files
+    #
+    # cat_img = path.join(support_dir, "octocat.png")
+    # copyfile(cat_img, path.join(media_dir, "octocat.png"))
 
     note = Note(col, {"id": model_id}, None)
-    note.fields[0] = "カファば"
+    note.fields[0] = "カファばカファば"
     note.fields[1] = "A kafaba keyword"
     # ゆ-bw.png
     note.fields[2] = "120"
