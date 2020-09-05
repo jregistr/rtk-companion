@@ -8,7 +8,7 @@ from anki.notes import Note
 from anki.decks import DeckManager
 from shutil import copyfile
 from . import project
-import os.path
+from os import path
 
 debug_file_name = "./rtk-debug.txt"
 
@@ -22,8 +22,8 @@ def test_function():
     media_dir = mw.col.media.dir()
     support_dir = project.support_files
 
-    cat_img = os.path.join(support_dir, "octocat.png")
-    copyfile(cat_img, os.path.join(media_dir, "octocat.png"))
+    cat_img = path.join(support_dir, "octocat.png")
+    copyfile(cat_img, path.join(media_dir, "octocat.png"))
 
     note = Note(col, {"id": model_id}, None)
     note.fields[0] = "カファば"
