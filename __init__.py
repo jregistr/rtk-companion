@@ -6,6 +6,9 @@ import anki.backend_pb2 as pb
 from anki.cards import Card
 from anki.notes import Note
 from anki.decks import DeckManager
+from shutil import copyfile
+from . import project
+import os.path
 
 debug_file_name = "./rtk-debug.txt"
 
@@ -16,13 +19,19 @@ def test_function():
     deck_id = 1591395939518
     # col.models.all_names_and_ids()
     # deck = col.decks.byName("Experimenting")
+    media_dir = mw.col.media.dir()
+    support_dir = project.support_files
+
+    cat_img = os.path.join(support_dir, "octocat.png")
+    copyfile(cat_img, os.path.join(media_dir, "octocat.png"))
+
     note = Note(col, {"id": model_id}, None)
-    note.fields[0] = "カカファ"
-    note.fields[1] = "A Ka keyword"
+    note.fields[0] = "カファば"
+    note.fields[1] = "A kafaba keyword"
     # ゆ-bw.png
     note.fields[2] = "120"
     note.fields[3] = "The amazing story about the Ka character is amazing."
-    note.fields[4] = '<img src="ぷ-bw.png">'
+    note.fields[4] = '<img src="octocat.png">'
 
     col.add_note(note, deck_id)
     col.save()
