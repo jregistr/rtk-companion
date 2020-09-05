@@ -1,6 +1,6 @@
 [[source]]
-name = "rtk-companion"
-url = "https://github.com/jregistr/rtk-companion.git"
+name = "pypi"
+url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
