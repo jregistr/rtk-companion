@@ -12,5 +12,8 @@ out/
 # Python
 .mypy_cache/
 
+# OS
+.DS_Store
+
 # Misc
 .env
