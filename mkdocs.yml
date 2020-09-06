@@ -1,1 +1,12 @@
 site_name: RTK Companion
+repo_url: https://github.com/jregistr/rtk-companion.git
+repo_name: jregistr/rtk-companion.git
+
+theme:
+  name: readthedocs
+
+nav:
+  - Home: index.md
+  - Project:
+      - 1 - MVP: project/mvp.md
+
