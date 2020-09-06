@@ -1,14 +1,14 @@
 # Decision Log
 
 Decisions made for this project will be tracked here in as ADRs using the MADR format. Information
-about ADRs is available at https://adr.github.io/ and information on the MADR format specifically
-is available at: https://adr.github.io/madr/.
+about ADRs is available at [adr.github.io](https://adr.github.io/) and information on the MADR format specifically
+is available at: [adr.github.io/madr](https://adr.github.io/madr/).
 
 ## How to Add an ADR
 Install [adr-tools](https://github.com/npryce/adr-tools) and [adr-log](https://github.com/adr/adr-log).
 
-##### Create a new ADR file
-Create a new ADR, e.g. a new ADR with the title "Use MySQL Database":
+##### 1. Create a new ADR file
+Create with the title "Use MySQL Database":
 
     adr new Use MySQL Database
 
@@ -20,10 +20,11 @@ Create a new ADR that supercedes ADRs 3 and 4, and amends ADR 5:
 
     adr new -s 3 -s 4 -l "5:Amends:Amended by" Use Riak CRDTs to cope with scale
 
+<br/>
+##### 2. Write the ADR
+<br/>
 
-##### Write the ADR
-
-##### Update the ADR log at `decision-log/index.md`
+##### 3. Update the ADR log at `decision-log/index.md`
 
     adr-log -d docs/decision-log/ -i
 

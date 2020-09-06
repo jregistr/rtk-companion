@@ -1,12 +1,22 @@
 site_name: RTK Companion
 repo_url: https://github.com/jregistr/rtk-companion.git
 repo_name: jregistr/rtk-companion.git
+edit_uri: ""
 
 theme:
   name: readthedocs
 
 nav:
   - Home: index.md
-  - Project:
-      - 1 - MVP: project/mvp.md
+  - Decisions Log:
+      - Decisions: decision-log/index.md
+      - Decision Template: decision-log/templates/template.md
+
+markdown_extensions:
+  - toc:
+      permalink: 
+  - admonition
+
+plugins:
+  - search
 
