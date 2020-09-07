@@ -36,7 +36,10 @@ This log is the list of decisions made for the RTK Companion project.
 <!-- adrlog -- Regenerate the content by using "adr-log -i". You can install it via "npm install -g adr-log" -->
 
 - [ADR-0001](0001-create-an-anki-addon.md) - Create an Anki Addon for RTK
+- [ADR-0002](0002-define-goal-for-an-mvp.md) - Define Goal for an MVP
 
 <!-- adrlogstop -->
+
+
 
 
