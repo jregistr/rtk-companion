@@ -1,22 +1,32 @@
-from aqt import mw
-from aqt.utils import showInfo
-from aqt.qt import QAction
-from typing import Sequence
-import anki.backend_pb2 as pb
-from anki.cards import Card
-from anki.notes import Note
-from anki.decks import DeckManager
-from shutil import copyfile
-from . import project
-from os import path
 
-debug_file_name = "./rtk-debug.txt"
+# ------------------------------------------
+# ------------------------------------------
+# ------------------------------------------
+# from aqt import mw
+# from aqt.utils import showInfo
+# from aqt.qt import QAction
+# from typing import Sequence
+# import anki.backend_pb2 as pb
+# from anki.cards import Card
+# from anki.notes import Note
+# from anki.decks import DeckManager
+# from shutil import copyfile
+# from . import project
+# from os import path
+# ------------------------------------------# ------------------------------------------
+# ------------------------------------------# ------------------------------------------
+# ------------------------------------------# ------------------------------------------
+# ------------------------------------------# ------------------------------------------
 
 
-def test_function():
-    col = mw.col
-    model_id = 1593059310637
-    deck_id = 1591395939518
+# def test_function():
+    # ------------------------------------------# ------------------------------------------
+    # ------------------------------------------# ------------------------------------------
+    # col = mw.col
+    # model_id = 1593059310637
+    # deck_id = 1591395939518
+    # ------------------------------------------# ------------------------------------------
+    # ------------------------------------------# ------------------------------------------
     # col.models.all_names_and_ids()
     # deck = col.decks.byName("Experimenting")
     # media_dir = mw.col.media.dir()
@@ -25,17 +35,22 @@ def test_function():
     # cat_img = path.join(support_dir, "octocat.png")
     # copyfile(cat_img, path.join(media_dir, "octocat.png"))
 
-    note = Note(col, {"id": model_id}, None)
-    note.fields[0] = "カファばカファば"
-    note.fields[1] = "A kafaba keyword"
-    # ゆ-bw.png
-    note.fields[2] = "120"
-    note.fields[3] = "The amazing story about the Ka character is amazing."
-    note.fields[4] = '<img src="octocat.png">'
-
-    col.add_note(note, deck_id)
-    col.save()
-    mw.deckBrowser.refresh()
+    # ------------------------------------------# ------------------------------------------
+    # ------------------------------------------# ------------------------------------------
+    # ------------------------------------------# ------------------------------------------
+    # note = Note(col, {"id": model_id}, None)
+    # note.fields[0] = "カファばカファば"
+    # note.fields[1] = "A kafaba keyword"
+    # # ゆ-bw.png
+    # note.fields[2] = "120"
+    # note.fields[3] = "The amazing story about the Ka character is amazing."
+    # note.fields[4] = '<img src="octocat.png">'
+    #
+    # col.add_note(note, deck_id)
+    # col.save()
+    # mw.deckBrowser.refresh()
+    # ------------------------------------------# ------------------------------------------
+    # ------------------------------------------# ------------------------------------------
 
 
 # def test_function():
@@ -89,6 +104,9 @@ def test_function():
 #     # showInfo("%s" % as_string)
 
 
-action = QAction("Rtk Companion", mw)
-action.triggered.connect(test_function)
-mw.form.menuTools.addAction(action)
+# ------------------------------------------
+# ------------------------------------------
+# ------------------------------------------
+# action = QAction("Rtk Companion", mw)
+# action.triggered.connect(test_function)
+# mw.form.menuTools.addAction(action)
