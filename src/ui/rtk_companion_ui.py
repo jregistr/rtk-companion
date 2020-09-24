@@ -1,5 +1,6 @@
-from aqt.qt import QDialog, QDialogButtonBox, Qt, QRect
+from aqt.qt import QDialog, QDialogButtonBox, Qt, QSize, QVBoxLayout
 from aqt.utils import showInfo
+from .kanji_finder_ui import KanjiFinder
 
 
 # class MainWindow(QDialog):
@@ -28,11 +29,21 @@ from aqt.utils import showInfo
 
 
 class RTKCompanionUI(object):
-    def setupUi(self, dialog):
-        dialog.setObjectName("Dialog")
-        dialog.resize(400, 300)
-        self.buttonBox = QDialogButtonBox(dialog)
-        self.buttonBox.setGeometry(QRect(290, 20, 81, 241))
-        self.buttonBox.setOrientation(Qt.Vertical)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
-        self.buttonBox.setObjectName("buttonBox")
+    def __init__(self, companion_window):
+        companion_window.setObjectName("RTK Companion")
+        companion_window.resize(1000, 900)
+        companion_window.setMinimumSize(QSize(500, 450))
+        companion_window.setAutoFillBackground(False)
+        self.vbox_layout = QVBoxLayout(companion_window)
+
+        finder = KanjiFinder()
+        self.vbox_layout.addLayout(finder)
+
+    # def setupUi(self, dialog):
+    #     dialog.setObjectName("Dialog")
+    #     dialog.resize(400, 300)
+    #     self.buttonBox = QDialogButtonBox(dialog)
+    #     self.buttonBox.setGeometry(QRect(290, 20, 81, 241))
+    #     self.buttonBox.setOrientation(Qt.Vertical)
+    #     self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel | QDialogButtonBox.Ok)
+    #     self.buttonBox.setObjectName("buttonBox")
