@@ -11,5 +11,5 @@ class RTKCompanionCTLR(QDialog):
                 | Qt.WindowMinimizeButtonHint
 
         super(RTKCompanionCTLR, self).__init__(parent_widget, flags)
-        self.setModal(True)
+        # self.setModal(True)
         self.ui = RTKCompanionUI(self)
