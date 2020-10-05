@@ -2,67 +2,69 @@ from aqt.qt import QHBoxLayout, QVBoxLayout, QGridLayout, Qt
 from aqt import qt
 
 
-class KanjiFinder(QHBoxLayout):
+class KanjiFinder(QVBoxLayout):
     def __init__(self):
         super(KanjiFinder, self).__init__()
         self.setAlignment(Qt.AlignTop)
-
-        scroller_layout, *_ = kanji_scroller()
-        desc_kanji, *_ = kanji_desc()
-
-        self.addLayout(scroller_layout)
-        self.addLayout(desc_kanji)
+        self.addLayout(kanji_scroll_display_add(self))
 
 
-def kanji_scroller():
-    grid_layout = QGridLayout()
-    search_field = qt.QLineEdit()
-    grid_layout.addWidget(search_field, 0, 0, 1, 2)
-
-    left_right_layout = QHBoxLayout()
-    left_right_layout.setContentsMargins(0, 0, 0, 0)
-
-    left_right_layout.setAlignment(Qt.AlignTop)
-    grid_layout.addLayout(left_right_layout, 1, 0, 1, 2, Qt.AlignTop)
-
-    left_btn = qt.QPushButton("<")
-    right_btn = qt.QPushButton(">")
-    left_right_layout.addWidget(left_btn, 0, Qt.AlignTop)
-    left_right_layout.addWidget(right_btn, 0, Qt.AlignTop)
-
-    search_btn = qt.QPushButton("Search")
-    grid_layout.addWidget(search_btn, 2, 0, 1, 2, Qt.AlignTop)
-    return grid_layout, search_field, left_btn, right_btn, search_btn
+# <editor-fold desc="Kanji Scroll & Display">
+def kanji_scroll_display_add(finder: KanjiFinder) -> qt.QLayout:
+    layout = QHBoxLayout()
+    layout.addLayout(kanji_scroll_search(finder), 1)
+    layout.addLayout(kanji_summary_group(finder), 5)
+    return layout
 
 
-def kanji_desc():
-    vbox = QVBoxLayout()
-    vbox.setAlignment(Qt.AlignTop)
-    top, meaning, number, upsert = kanji_desc_top()
+def kanji_scroll_search(finder: KanjiFinder) -> qt.QLayout:
+    layout = QGridLayout()
 
-    vbox.addLayout(top)
-    return vbox, meaning, number, upsert
+    # Create widgets
+    finder.search_box = qt.QLineEdit()
+    finder.left_btn = qt.QPushButton("<<")
+    finder.right_btn = qt.QPushButton(">>")
+    finder.search_btn = qt.QPushButton("Search")
+
+    # Set widget properties / style
+    finder.search_box.setStyleSheet("text-align: center;")
+
+    # Add to layout
+    layout.addWidget(finder.search_box, 0, 0, 1, 2)
+    layout.addWidget(finder.left_btn, 1, 0)
+    layout.addWidget(finder.right_btn, 1, 1)
+    layout.addWidget(finder.search_btn, 2, 0, 1, 2)
+    return layout
 
 
-def kanji_desc_top():
-    top_line = QHBoxLayout()
-    top_line.setAlignment(Qt.AlignTop)
+def kanji_summary_group(finder: KanjiFinder) -> qt.QLayout:
+    # 12 cell grid
+    layout = QGridLayout()
 
-    meaning_label = qt.QLabel()
-    meaning_label.setText("Younger Sister")
-    # meaning_label.resize(150, 50)
-    meaning_label.setMinimumWidth(150)
-    meaning_label.setFixedHeight(50)
+    # Create widgets
+    finder.kanji_keyword = qt.QLabel("Younger Sister")
+    finder.kanji_hnumber = qt.QLabel("231")
+    finder.add_update_btn = qt.QPushButton("Add")
+    finder.kanji_display = qt.QLabel("婦")
+    finder.kanji_user_story = qt.QPlainTextEdit("""Lorem ipssimply dummy text of the printing and typesetting industry. Lorem Ipsum has been the 
+industry’s standard dummy text ever since the 1500s. when an unknown printer took a galley of type 
+and scrambled it to make a type specimen book. It has survived not only five centuries, but also 
+the leap into electronic typesetting, remaining essentially unchanged.""")
 
-    number_label = qt.QLabel()
-    number_label.setText("231")
-    number_label.resize(30, 50)
+    # Widget properties / style
+    finder.kanji_user_story.setMinimumWidth(600)
+    finder.kanji_user_story.setMaximumHeight(100)
+    finder.kanji_display.setStyleSheet("font-size: 100px")
 
-    upsert_btn = qt.QPushButton("Add")
-    upsert_btn.setFixedHeight(50)
-    upsert_btn.setMinimumWidth(100)
+    # Add to layout
+    layout.addWidget(finder.kanji_keyword, 0, 0, 1, 4)
+    layout.addWidget(finder.kanji_hnumber, 0, 5)
+    layout.addWidget(finder.add_update_btn, 0, 8, 1, 4)
+    layout.addWidget(finder.kanji_display, 1, 0, 2, 2)
+    layout.addWidget(finder.kanji_user_story, 1, 3, 2, 9)
+    return layout
+# </editor-fold>
 
-    top_line.addWidget(meaning_label)
-    top_line.addWidget(number_label)
-    top_line.addWidget(upsert_btn, 0, Qt.AlignRight)
-    return top_line, meaning_label, number_label, upsert_btn
+# <editor-fold desc="Kanji Stroke Order">
+
+# </editor-fold>
