@@ -28,6 +28,7 @@ def hook_for_editor_did_load_note(editor: Editor):
     if not editor.addMode:
         return
     add_button(editor, "Rtk", "rtk-btn", "run_fill_rtk", html_buttons_call_back)
+    add_button(editor, "Koohie", "koohie-btn", "toggle_koohie", html_buttons_call_back)
 
 
 def command_from_html_btn_bridge(editor: Editor.onBridgeCmd, cmd: str):
