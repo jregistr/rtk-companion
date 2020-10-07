@@ -1,0 +1,30 @@
+Error
+An error occurred. Please start Anki while holding down the shift key, which will temporarily disable the add-ons you have installed.
+If the issue only occurs when add-ons are enabled, please use the Tools > Add-ons menu item to disable some add-ons and restart Anki, repeating until you discover the add-on that is causing the problem.
+When you've discovered the add-on that is causing the problem, please report the issue on the add-on support site.
+Debug info:
+Anki 2.1.33 (3f403040) Python 3.8.0 Qt 5.14.2 PyQt 5.14.2
+Platform: Mac 10.15.7
+Flags: frz=True ao=True sv=2
+Add-ons, last update check: 2020-10-07 00:02:23
+Add-ons possibly involved: ⁨Rtk Companion⁩
+
+Caught exception:
+Traceback (most recent call last):
+  File "anki/notes.py", line 108, in _fieldOrd
+KeyError: 0
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "aqt/webview.py", line 37, in cmd
+  File "aqt/webview.py", line 123, in _onCmd
+  File "aqt/webview.py", line 547, in _onBridgeCmd
+  File "aqt/editor.py", line 401, in onBridgeCmd
+  File "aqt/gui_hooks.py", line 1487, in __call__
+  File "anki/hooks.py", line 594, in runFilter
+  File "/Users/208606/Library/Application Support/Anki2/addons21/12345678910/focusexperiment.py", line 39, in on_focus_was_lost
+    editor_n[fidx] = "<span>Cool</span>"
+  File "anki/notes.py", line 116, in __setitem__
+  File "anki/notes.py", line 110, in _fieldOrd
+KeyError: 0
