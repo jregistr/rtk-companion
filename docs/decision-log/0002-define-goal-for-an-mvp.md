@@ -1,6 +1,6 @@
 # Define Goal for an MVP
 
-* Status: accepted
+* Status: superseded by ADR-0000
 * Date: 2020-09-06
 
 Technical Story: Create the vision for what an MVP looks like.

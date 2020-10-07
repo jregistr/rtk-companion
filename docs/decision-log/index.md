@@ -37,8 +37,11 @@ This log is the list of decisions made for the RTK Companion project.
 
 - [ADR-0001](0001-create-an-anki-addon.md) - Create an Anki Addon for RTK
 - [ADR-0002](0002-define-goal-for-an-mvp.md) - Define Goal for an MVP
+- [ADR-0003](0003-mvp-functionality-in-add-card-window.md) - Different Approach to the MVP
 
 <!-- adrlogstop -->
+
+
 
 
 
