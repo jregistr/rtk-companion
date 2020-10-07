@@ -28,7 +28,29 @@ def add_button(editor: Editor, btn_text: str, btn_id: str, cmd: str, callback: C
     })();
     """ % (btn_id, cmd, btn_text)
 
-    editor.web.evalWithCallback(html_text, html_buttons_call_back)
+    editor.web.evalWithCallback(html_text, callback)
+
+
+def fill_div_with_content(editor: Editor, div_id: str, value: str, is_img: bool = False):
+    def callback(info: str):
+        with open("boom-shaka-cb.txt", "w", encoding="utf-8") as debug_fn:
+            debug_fn.write(str(info))
+            debug_fn.flush()
+
+    inner_html = value if not is_img else """<img src="%s"/>""" % value
+
+    js = """
+    (() => {
+    var div = document.getElementById('%s');
+    div.innerHTML = '%s';
+    var event = new Event('change');
+    div.dispatchEvent(event);
+    //div.click();
+    var inner = div.innerHTML;
+    return inner;
+    })();
+    """ % (div_id, inner_html)
+    editor.web.evalWithCallback(js, callback)
 
 
 def hook_for_editor_did_load_note(editor: Editor):
@@ -42,6 +64,10 @@ def command_from_html_btn_bridge(editor: Editor, cmd: str):
     if cmd == "run_fill_rtk":
         maybe_add_cards: AddCards = editor.web.parent().parent()
         assert (isinstance(maybe_add_cards, AddCards))
+        fill_div_with_content(editor, "f0", "裂")
+        # fill_div_with_content(editor, "f1", "paulownia")
+        # fill_div_with_content(editor, "f2", "216")
+        # fill_div_with_content(editor, "f4", "paste-daf4ef50b84931b5eb2ce90ec127d147392ee517.jpg", True)
 
         # with open("boom-shaka.txt", "a", encoding="utf-8") as debug_fn:
         #     debug_fn.write(cmd)
@@ -69,7 +95,7 @@ def command_from_html_btn_bridge(editor: Editor, cmd: str):
                 return fields_inner
                 })();
                 """
-        editor.web.evalWithCallback(js, callback)
+        # editor.web.evalWithCallback(js, callback)
         # fields = editor_note.fields
         # first_value = str(fields[0])
         # debug_fn.write(first_value)
