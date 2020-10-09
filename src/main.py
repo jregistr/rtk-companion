@@ -76,10 +76,42 @@ def cb_command_from_js_bridge(editor: Editor, cmd: str):
     if cmd == CMD_RTK_FILL:
         pass
     elif cmd == CMD_STORIES_TOGGLE:
-        pass
+        add_cards: AddCards = editor.web.parent().parent().parent()
+        assert(isinstance(add_cards, AddCards))
+        # some_note = Note(main_window.col, editor.note.mo)
+        # edin["Character"] = "ZZZ Foobar"
+        model_id = 1593059310637
+        note = Note(main_window.col, {"id": model_id}, None)
+        note["Character"] = "Goobar"
+        img_str = "paste-44b50bfd3adbc3672bec0a5a469383e313bc8275.jpg"
+        note["Stroke Order"] = '<img src="%s">' % img_str
+        editor.setNote(note)
+
+        # edin = editor.note
+        # edin.fields[0] = "Super Foobar"
+        # with open("_debug_file.txt", "a") as debug_fn:
+        #     debug_fn.write("FOO")
+        #     if edin is not None:
+        #         debug_fn.write("Not None")
+        #         bla = edin["Character"]
+        #         debug_fn.write(str(bla))
+        #     else:
+        #         debug_fn.write("It was None")
+        #         utils.showInfo("It was None")
+
+
+        # add_cards = editor.web.parent().parent().parent()
+        #
+        # with open("_debug_file.txt", "a") as debug_fn:
+        #     t = str(type(add_cards))
+        #     debug_fn.write(t)
+        #     inf = dir(add_cards)
+        #     pprint(inf, debug_fn)
+        #
+
 
 
 gui_hooks.editor_did_load_note.append(cb_editor_did_load_note_hook)
-gui_hooks.editor_did_unfocus_field.append(cb_editor_unfocused_field_hook)
+# gui_hooks.editor_did_unfocus_field.append(cb_editor_unfocused_field_hook)
 Editor.onBridgeCmd = wrap(Editor.onBridgeCmd, cb_command_from_js_bridge)
 # dockable_widget.add_dock(main_window)
