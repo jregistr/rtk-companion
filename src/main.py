@@ -46,32 +46,17 @@ def cb_editor_did_load_note_hook(editor: Editor):
             new_add_cards_layout = QHBoxLayout()
             new_add_cards_layout.setContentsMargins(0, 0, 0, 0)
             new_add_cards_layout.setSpacing(0)
-            new_add_cards_layout.addWidget(fill_widget)
+            new_add_cards_layout.addWidget(fill_widget, 2)
             add_cards.setLayout(new_add_cards_layout)
 
             browser_layout = QHBoxLayout()
-            # browser_layout.addWidget(QPushButton("To Valhalla"))
             new_add_cards_layout.addLayout(browser_layout)
 
             # web = QWebEngineView()
             # web.load(QUrl("https://google.com"))
             stories_browser = AddCardsKoohieBrowser()
-            stories_browser.load(QUrl("https://google.com"))
-            browser_layout.addWidget(stories_browser)
-
-            # widget_for_browser = QWidget()
-            # widget_for_browser.setFixedWidth(500)
-            # new_add_cards_layout.addWidget(widget_for_browser)
-            # stories_browser = AddCardsKoohieBrowser(widget_for_browser)
-            # stories_browser.load(QUrl("https://google.com"))
-
-
-
-            # with open("_debug_file.txt", "a") as debug_fn:
-            #     text = dir(add_cards_layout)
-            #     pprint(str(text), debug_fn)
-            #     debug_fn.write("=============================\n")
-            #     debug_fn.write(str(type(add_cards_layout)))
+            stories_browser.load(QUrl("https://kanji.koohii.com/"))
+            browser_layout.addWidget(stories_browser, 10)
 
 
 def cb_editor_unfocused_field_hook(changed: bool, editor_note: Note, cur_fid: int):
