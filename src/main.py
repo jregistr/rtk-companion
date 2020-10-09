@@ -1,20 +1,77 @@
 from aqt import gui_hooks, mw as main_window
 from aqt.editor import Editor
+from aqt.addcards import AddCards
 from aqt import utils
 from anki.hooks import wrap
 from anki.notes import Note
-from .ui.components import add_button
+from .ui.components import add_button_web_btn
+from aqt.qt import QHBoxLayout, QVBoxLayout, QWidget, QLayout, QPushButton, QUrl, QWebEngineView
+from .ui import dockable_widget
+from .ui import AddCardsKoohieBrowser
 from .data import heisigkanjis
+from pprint import pprint
 
 
 CMD_RTK_FILL = "run_fill_rtk"
 CMD_STORIES_TOGGLE = "toggle_stories"
 
+stories_browser = None
+stories_browser_displayed = False
+
 
 def cb_editor_did_load_note_hook(editor: Editor):
     if editor.addMode:
-        add_button(editor, "RTKz", "rtk-btn", CMD_RTK_FILL)
-        add_button(editor, "Stories", "rtk-stories", CMD_STORIES_TOGGLE)
+        add_button_web_btn(editor, "RTK", "rtk-btn", CMD_RTK_FILL)
+        add_button_web_btn(editor, "Stories", "rtk-stories", CMD_STORIES_TOGGLE)
+        global stories_browser
+        if stories_browser is None:
+
+            add_cards: AddCards = editor.web.parent().parent()
+            assert(isinstance(add_cards, AddCards))
+            old_add_cards_layout = add_cards.layout()
+            new_vbox = QVBoxLayout()
+
+            while old_add_cards_layout.count() > 0:
+                ui_obj = old_add_cards_layout.takeAt(0)
+                if ui_obj.widget() is None or isinstance(ui_obj, QLayout):
+                    new_vbox.addLayout(ui_obj.layout())
+                else:
+                    new_vbox.addWidget(ui_obj.widget())
+
+            trash = QWidget()
+            trash.setLayout(old_add_cards_layout)
+            fill_widget = QWidget()
+            fill_widget.setLayout(new_vbox)
+
+            new_add_cards_layout = QHBoxLayout()
+            new_add_cards_layout.setContentsMargins(0, 0, 0, 0)
+            new_add_cards_layout.setSpacing(0)
+            new_add_cards_layout.addWidget(fill_widget)
+            add_cards.setLayout(new_add_cards_layout)
+
+            browser_layout = QHBoxLayout()
+            # browser_layout.addWidget(QPushButton("To Valhalla"))
+            new_add_cards_layout.addLayout(browser_layout)
+
+            # web = QWebEngineView()
+            # web.load(QUrl("https://google.com"))
+            stories_browser = AddCardsKoohieBrowser()
+            stories_browser.load(QUrl("https://google.com"))
+            browser_layout.addWidget(stories_browser)
+
+            # widget_for_browser = QWidget()
+            # widget_for_browser.setFixedWidth(500)
+            # new_add_cards_layout.addWidget(widget_for_browser)
+            # stories_browser = AddCardsKoohieBrowser(widget_for_browser)
+            # stories_browser.load(QUrl("https://google.com"))
+
+
+
+            # with open("_debug_file.txt", "a") as debug_fn:
+            #     text = dir(add_cards_layout)
+            #     pprint(str(text), debug_fn)
+            #     debug_fn.write("=============================\n")
+            #     debug_fn.write(str(type(add_cards_layout)))
 
 
 def cb_editor_unfocused_field_hook(changed: bool, editor_note: Note, cur_fid: int):
@@ -40,3 +97,4 @@ def cb_command_from_js_bridge(editor: Editor, cmd: str):
 gui_hooks.editor_did_load_note.append(cb_editor_did_load_note_hook)
 gui_hooks.editor_did_unfocus_field.append(cb_editor_unfocused_field_hook)
 Editor.onBridgeCmd = wrap(Editor.onBridgeCmd, cb_command_from_js_bridge)
+# dockable_widget.add_dock(main_window)

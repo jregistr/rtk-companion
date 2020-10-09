@@ -1,8 +1,7 @@
 from aqt.editor import Editor
-from typing import List, Any, Callable
 
 
-def add_button(editor: Editor, btn_text: str, btn_id: str, cmd: str):
+def add_button_web_btn(editor: Editor, btn_text: str, btn_id: str, cmd: str):
     html_text = """
     (() => {
         var btn = document.getElementById('%s');
