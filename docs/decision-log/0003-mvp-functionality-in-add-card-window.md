@@ -1,6 +1,6 @@
 # Different Approach to the MVP
 
-* Status: proposed
+* Status: accepted
 * Deciders: Me
 * Date: 2020-10-07
 
