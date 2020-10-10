@@ -1,0 +1,20 @@
+[
+  {
+    "number": "700",
+    "kanji": "抗",
+    "keyword": "confront",
+    "stroke_order_fn": "rtk-kanji-strk-ord-700.jpg"
+  },
+  {
+    "number": "701",
+    "kanji": "批",
+    "keyword": "criticism",
+    "stroke_order_fn": "rtk-kanji-strk-ord-701.jpg"
+  },
+  {
+    "number": "702",
+    "kanji": "招",
+    "keyword": "beckon",
+    "stroke_order_fn": "rtk-kanji-strk-ord-702.jpg"
+  }
+]
