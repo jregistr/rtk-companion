@@ -5,9 +5,10 @@ from anki.collection import Collection
 from aqt import utils as anki_utils
 from . import heisigkanjis
 from .heisigkanjis import KEY_KEYWORD, KEY_NUMBER, KEY_KANJI
+from ..ui import AddCardsKoohieWebview
 
 
-def maybe_fill_editor_rtk_data(editor: Editor, col: Collection):
+def maybe_fill_editor_rtk_data(col: Collection, editor: Editor, stories_view: AddCardsKoohieWebview):
     editor_note = editor.note
     if editor_note is not None:
         number_f_value = editor_note["Number"]
@@ -16,6 +17,8 @@ def maybe_fill_editor_rtk_data(editor: Editor, col: Collection):
             if kanji_info is not None:
                 new_editor_note = kanji_info_to_note(kanji_info, editor_note.mid, col)
                 editor.setNote(new_editor_note)
+                if stories_view.isVisible():
+                    stories_view.go_to_story(number_f_value)
             else:
                 anki_utils.showInfo("Could not find kanji info for heisig number: %s" %
                                     number_f_value)

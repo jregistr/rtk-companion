@@ -57,10 +57,11 @@ def toggle_browser_visibility():
 
 
 def cb_on_command_from_js_bridge(editor: Editor, cmd: str):
+    global stories_browser
     if editor.addMode:
         if cmd == BRIDGE_CMD_RTK_FILL:
             col = main_window.col
-            rtkfill.maybe_fill_editor_rtk_data(editor, col)
+            rtkfill.maybe_fill_editor_rtk_data(col, editor, stories_browser)
         elif cmd == BRIDGE_CMD_STORIES_TOGGLE:
             toggle_browser_visibility()
 
