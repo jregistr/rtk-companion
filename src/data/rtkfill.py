@@ -8,7 +8,8 @@ from .heisigkanjis import KEY_KEYWORD, KEY_NUMBER, KEY_KANJI
 from ..ui import AddCardsKoohieWebview
 
 
-def maybe_fill_editor_rtk_data(col: Collection, editor: Editor, stories_view: AddCardsKoohieWebview):
+def maybe_fill_editor_rtk_data(col: Collection, editor: Editor,
+                               stories_view: AddCardsKoohieWebview):
     editor_note = editor.note
     if editor_note is not None:
         number_f_value = editor_note["Number"]
