@@ -36,6 +36,5 @@ class AddCardsKoohieWebview(QWebEngineView):
     def page_finished_loading(self):
         page_url: QUrl = self.url()
         page_url_str: str = page_url.toString()
-        find_sub = page_url_str.find("/study/kanji/")
-        if find_sub != -1:
+        if "/study/kanji/" in page_url_str:
             self.trim_story_page()
