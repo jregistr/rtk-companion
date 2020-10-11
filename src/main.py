@@ -19,7 +19,8 @@ def cb_on_editor_did_load_hook(editor: Editor):
     global stories_browser, stories_browser_displayed
     if editor.addMode:
         ui.maybe_add_btn_to_top_left(editor, BTN_TEXT_RTK, "rtk-btn", BRIDGE_CMD_RTK_FILL)
-        ui.maybe_add_btn_to_top_left(editor, BTN_TEXT_HIDE_STORIES, "rtk-stories", BRIDGE_CMD_STORIES_TOGGLE)
+        ui.maybe_add_btn_to_top_left(editor, BTN_TEXT_HIDE_STORIES, "rtk-stories",
+                                     BRIDGE_CMD_STORIES_TOGGLE)
         if stories_browser is None:
             # Initialize and set vars
             add_cards_layout = ui.change_add_window_layout(editor)
