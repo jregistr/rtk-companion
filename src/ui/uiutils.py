@@ -30,7 +30,7 @@ def maybe_add_btn_to_top_left(editor: Editor, btn_text: str, btn_id: str, bridge
 # which becomes ultimately a child element of a new HBox layout.
 def change_add_window_layout(add_cards_editor: Editor) -> qt.QHBoxLayout:
     add_cards: AddCards = add_cards_editor.web.parent().parent()
-    assert(isinstance(add_cards, AddCards))
+    assert (isinstance(add_cards, AddCards))
     old_vbox: qt.QLayout = add_cards.layout()
     new_vbox = qt.QVBoxLayout()
 
@@ -63,4 +63,3 @@ def add_stories_view_to_hbox(parent: qt.QHBoxLayout, stories_view):
     parent.addLayout(browser_layout, STRETCH_STORIES_LAYOUT)
 
     browser_layout.addWidget(stories_view)
-

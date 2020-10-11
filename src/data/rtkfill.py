@@ -17,7 +17,8 @@ def maybe_fill_editor_rtk_data(editor: Editor, col: Collection):
                 new_editor_note = kanji_info_to_note(kanji_info, editor_note.mid, col)
                 editor.setNote(new_editor_note)
             else:
-                anki_utils.showInfo("Could not find kanji info for heisig number: %s" % number_f_value)
+                anki_utils.showInfo("Could not find kanji info for heisig number: %s" %
+                                    number_f_value)
         else:
             anki_utils.showInfo("No Number value found", type="warning")
     else:

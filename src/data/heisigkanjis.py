@@ -46,6 +46,7 @@ def get_stroke_order_frame(kanji_info: Dict[str, str], col: Collection) -> Optio
         except FileNotFoundError:
             showWarning("Stroke order zip file not found at: %s" % zip_fn)
         except KeyError:
-            showWarning("Looks like the stroke order image file %s is not in the archeive" % strk_fn)
+            showWarning("Looks like the stroke order image file %s is not in the archeive" %
+                        strk_fn)
     else:
         return None
