@@ -1,4 +1,4 @@
-name: Python package
+name: Formatted Python Code Check
 
 on: [pull_request]
 
