@@ -59,7 +59,4 @@ def change_add_window_layout(add_cards_editor: Editor) -> qt.QHBoxLayout:
 
 
 def add_stories_view_to_hbox(parent: qt.QHBoxLayout, stories_view):
-    browser_layout = qt.QHBoxLayout()
-    parent.addLayout(browser_layout, STRETCH_STORIES_LAYOUT)
-
-    browser_layout.addWidget(stories_view)
+    parent.addWidget(stories_view, STRETCH_STORIES_LAYOUT)
