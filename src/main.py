@@ -1,11 +1,6 @@
-from typing import List
 from aqt import gui_hooks, mw as main_window
 from aqt.editor import Editor
-from aqt.addcards import AddCards
-from aqt import utils
-from aqt import qt
 from anki import hooks
-from anki.notes import Note
 from . import ui
 from .data import rtkfill
 
@@ -38,7 +33,8 @@ def cb_on_editor_did_load_hook(editor: Editor):
 def cb_on_command_from_js_bridge(editor: Editor, cmd: str):
     if editor.addMode:
         if cmd == BRIDGE_CMD_RTK_FILL:
-            rtkfill.maybe_fill_editor_rtk_data(editor)
+            col = main_window.col
+            rtkfill.maybe_fill_editor_rtk_data(editor, col)
 
 
 gui_hooks.editor_did_init.append(cb_on_editor_did_load_hook)
