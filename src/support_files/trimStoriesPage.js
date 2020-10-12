@@ -24,7 +24,7 @@ try {
     const kanjiOnPage = document.querySelector("#my-story > div.padding.rtkframe > div.left > div.kanji > span").innerText
     if(kanjiOnPage) {
         document.querySelector("#browse > div > div:nth-child(2) > a > i").innerHTML = kanjiOnPage;
-        document.querySelector("#browse > div > div:nth-child(2) > a").href = ""
+        document.querySelector("#browse > div > div:nth-child(2) > a").href = "#"
         document.querySelector("#browse > div > div:nth-child(2) > a > i").className = "fa"
         document.querySelector("#browse > div > div:nth-child(2) > a > i").style.color = "white"
     } else {
