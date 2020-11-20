@@ -7,7 +7,7 @@ def asci_to_unicode_and_dump():
     with open("kanji_data.json") as json_file:
         json_array = json.load(json_file)
     
-    with open("kanji_data.json") as json_file:
+    with open("kanji_data.json", "w") as json_file:
         json.dump(json_array, json_file, ensure_ascii=False)
 
 # Let's capitalize all keywords like they are titles 
@@ -34,3 +34,7 @@ def capilize_like_titles_and_dump():
 
     with open("kanji_data.json", "w") as json_file:
         json.dump(json_array, json_file, ensure_ascii=False)
+
+
+
+capilize_like_titles_and_dump()
