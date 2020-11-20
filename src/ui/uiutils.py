@@ -2,8 +2,8 @@ from aqt.editor import Editor
 from aqt import qt
 from aqt.addcards import AddCards
 
-STRETCH_ADD_CARDS_LAYOUT = 1
-STRETCH_STORIES_LAYOUT = 10
+STRETCH_ADD_CARDS_LAYOUT = 10
+STRETCH_STORIES_LAYOUT = 5
 
 
 # Add a Button to the top left area of the Add Cards window next to the "Cards" and "Fields" buttons
