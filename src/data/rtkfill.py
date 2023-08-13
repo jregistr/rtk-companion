@@ -26,7 +26,7 @@ def maybe_fill_editor_rtk_data(col: Collection, editor: Editor,
         else:
             anki_utils.showInfo("No Number value found", type="warning")
     else:
-        anki_utils.showInfo("Editor Note is None", type="critical")
+        anki_utils.showInfo("No current editor with a note.", type="critical")
 
 
 def kanji_info_to_note(kanji_info: Dict, note_id: int, col: Collection) -> Note:

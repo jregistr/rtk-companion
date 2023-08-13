@@ -1,5 +1,6 @@
 from os import path
 from aqt.qt import QWebEngineView, QUrl
+from aqt import mw
 from ..project import support_files_path
 
 KOOHIE_URL = "https://kanji.koohii.com"
@@ -13,6 +14,7 @@ def load_trim_script():
 
 
 class AddCardsKoohieWebview(QWebEngineView):
+
     def __init__(self):
         super(AddCardsKoohieWebview, self).__init__(parent=None)
         self.trim_page_script = load_trim_script()
@@ -21,6 +23,7 @@ class AddCardsKoohieWebview(QWebEngineView):
     def go_to_koohie(self):
         koohie_url = QUrl(KOOHIE_URL)
         self.load(koohie_url)
+        self.show()
 
     def trim_story_page(self):
         script = self.trim_page_script

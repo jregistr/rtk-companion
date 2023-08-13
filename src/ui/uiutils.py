@@ -2,25 +2,24 @@ from aqt.editor import Editor
 from aqt import qt
 from aqt.addcards import AddCards
 
+from typing import Callable, Optional
+
+from ..project import support_files_path
+from os import path
+
 STRETCH_ADD_CARDS_LAYOUT = 10
 STRETCH_STORIES_LAYOUT = 5
 
 
-# Add a Button to the top left area of the Add Cards window next to the "Cards" and "Fields" buttons
-# This area is made with HTML. The area of interest has a div with id=topbutsleft
-# When these buttons are clicked, `pycmd` triggers a command that can be handled by
-# wrapping editor.onBridgeCmd separately from the creation of this button.
-def maybe_add_btn_to_top_left(editor: Editor, btn_text: str, btn_id: str, bridge_cmd: str):
-    html_text = """
-    (() => {
-        var btn = document.getElementById('%s');
-        if (!btn) {
-            document.getElementById('topbutsleft').innerHTML += `<button id='%s' onclick='pycmd("%s")'>%s</button> `;
-        }
-        return []
-    })();
-    """ % (btn_id, btn_id, bridge_cmd, btn_text)
-    editor.web.evalWithCallback(html_text, lambda _: None)
+def make_editor_ui_button(editor: Editor,
+                          cmd: str,
+                          callback: Callable[[Editor], None],
+                          label: str = "",
+                          icon: Optional[str] = None):
+    icon_path = None
+    if icon is not None:
+        icon_path = path.join(support_files_path, "icons", icon)
+    return editor.addButton(icon=icon_path, cmd=cmd, label=label, func=callback)
 
 
 # The default layout of the Add Cards window is a VBox. Since a webview

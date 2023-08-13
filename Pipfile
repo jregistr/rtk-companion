@@ -8,10 +8,10 @@ yapf = "*"
 
 [packages]
 mypy = "*"
-ankirspy = "*"
 anki = "*"
 aqt = "*"
 mkdocs = "*"
+pyqt6 = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
